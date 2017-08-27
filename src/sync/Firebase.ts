@@ -94,13 +94,16 @@ export default class Sync {
     })
   }
 
-  public login = async () => {
+  public async login() {
     try {
+      console.log(this);
+
       const result = await Firebase
         .auth()
         .signInWithPopup(new Firebase.auth.GoogleAuthProvider());
 
       const user = result.user;
+      console.log(this);
       this.setAuthor({
         uid: user.uid,
         name: user.displayName,
