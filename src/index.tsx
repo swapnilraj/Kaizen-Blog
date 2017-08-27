@@ -1,5 +1,8 @@
-console.log('foo');
+import Sync from './sync/Firebase';
 
-import Sync from './sync/Sync';
+const sync = Sync.getService();
 
-Sync.getService().getBlogs().then(l => console.log(l));
+const button = document.getElementById('login') as HTMLElement;
+button.addEventListener('click', sync.login);
+
+sync.getBlogs().then(l => console.log(l));

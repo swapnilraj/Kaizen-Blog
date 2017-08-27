@@ -3,6 +3,7 @@
  */
 
 import * as Firebase from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/database';
 
 import config from './config';
@@ -14,13 +15,19 @@ export default class Sync {
   private db:  Firebase.database.Database;
 
   private refs = {
+    authors: () => '/authors',
+    author: (uid: string) => this.refs.authors() + `/${uid}`,
     blogs: () => '/blogs',
     blog: (uid: string) => this.refs.blogs() + `/${uid}`
   };
 
   private constructor() {
     // Fail if config is missing or incomplete
-    if(!config.apiKey || !config.databaseURL) {
+    if(!config.apiKey ||
+      !config.databaseURL ||
+      !config.authDomain ||
+      !config.projectId
+    ) {
       console.log('Unable to configure Firebase');
       return;
     }
@@ -71,5 +78,38 @@ export default class Sync {
 
   public async setBlog(id: string, blog: Blog): Promise<Blog> {
     return this.writeRef(this.refs.blog(id), blog);
+  }
+
+  public async setAuthor(author: {
+    uid: string,
+    name: string,
+    email: string,
+    photo: string,
+  }) {
+    return this.writeRef<Author>(this.refs.author(author.uid), {
+      email: author.email,
+      name: author.name,
+      photo: author.photo,
+      bio: '',
+    })
+  }
+
+  public login = async () => {
+    try {
+      const result = await Firebase
+        .auth()
+        .signInWithPopup(new Firebase.auth.GoogleAuthProvider());
+
+      const user = result.user;
+      this.setAuthor({
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      }).then(user => console.log(user));
+
+    } catch (err) {
+      console.log(`Login failed: ${err}`);
+    }
   }
 }

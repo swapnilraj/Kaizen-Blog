@@ -33,6 +33,7 @@ interface Author {
   name: string;
   email: string;
   bio: string;
+  photo: string;
 }
 
 interface AuthorMap {
