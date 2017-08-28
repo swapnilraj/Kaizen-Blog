@@ -1,11 +1,11 @@
 import Router from 'preact-router';
 import { h, render } from 'preact';
 
-import Home from './components/Home';
+import Blogs from './components/Blogs';
 
 const App = () => (
   <Router>
-    <Home path="/"/>
+    <Blogs blogs={ [] } path="/"/>
   </Router>
 );
 

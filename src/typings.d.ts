@@ -23,6 +23,9 @@ interface Blog {
   authors: string[];
   comments: never[];
   salutes: number;
+  slug: string;
+  tags: string[];
+  banner: string;
 }
 
 interface BlogMap {
@@ -34,6 +37,7 @@ interface Author {
   email: string;
   bio: string;
   photo: string;
+  username: string;
 }
 
 interface AuthorMap {
