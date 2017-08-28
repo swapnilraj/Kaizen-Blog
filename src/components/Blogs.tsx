@@ -3,8 +3,9 @@ import { h } from 'preact';
 import BlogCard from './BlogCard';
 
 interface BlogsProps {
-  path: string;
   blogs: Blog[];
+  loading: boolean;
+  getBlogs: () => void;
 }
 
 const renderBlog = (blog: Blog) => (
