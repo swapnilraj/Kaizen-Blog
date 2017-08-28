@@ -8,7 +8,7 @@ import {
 
 export const preloadedState = (): State => ({
   blogs: {
-    blogs: {
+    blogPosts: {
       'some-blog': {
         authors: ['Sawpnil', 'Sjanti'],
         banner: 'http://via.placeholder.com/350x150',

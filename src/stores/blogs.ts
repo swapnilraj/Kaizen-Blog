@@ -14,12 +14,12 @@ export const getBlogs = () => ({
 export type BlogsActions = GetBlogsAction;
 
 export interface BlogsState {
-  blogs: BlogMap;
+  blogPosts: BlogMap;
   loading: boolean;
 }
 
 export const blogs = (state: BlogsState = {
-  blogs: {},
+  blogPosts: {},
   loading: false,
 }, action: BlogsActions): BlogsState => {
   switch(action.type) {

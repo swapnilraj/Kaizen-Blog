@@ -18,7 +18,7 @@ import {
 import Blogs from '../components/Blogs';
 
 const mapState = (state: State) => ({
-  blogs: Object.keys(state.blogs.blogs).map(k => state.blogs.blogs[k]),
+  blogs: Object.keys(state.blogs.blogPosts).map(k => state.blogs.blogPosts[k]),
   loading: state.blogs.loading,
 });
 
