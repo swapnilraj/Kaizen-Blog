@@ -1,8 +1,12 @@
-import Sync from './sync/Firebase';
+import Router from 'preact-router';
+import { h, render } from 'preact';
 
-const sync = Sync.getService();
+import Home from './components/Home';
 
-const button = document.getElementById('login') as HTMLElement;
-button.addEventListener('click', () => sync.login());
+const App = () => (
+  <Router>
+    <Home path="/"/>
+  </Router>
+);
 
-sync.getBlogs().then(l => console.log(l));
+render(App(), document.body);

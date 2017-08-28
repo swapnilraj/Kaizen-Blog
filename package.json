@@ -10,7 +10,13 @@
     "dev": "webpack-dev-server --config webpack.config.js --env.dev --hot --inline --host 0.0.0.0"
   },
   "dependencies": {
-    "firebase": "^4.3.0"
+    "firebase": "^4.3.0",
+    "preact": "^8.2.4",
+    "preact-redux": "^2.0.2",
+    "preact-router": "^2.5.7",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.16.0",
+    "rxjs": "^5.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
