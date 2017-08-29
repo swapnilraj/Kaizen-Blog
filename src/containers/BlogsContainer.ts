@@ -8,6 +8,10 @@ import {
 } from 'redux';
 
 import {
+  MapToArray,
+} from '../utils';
+
+import {
   getBlogs,
 } from '../stores/blogs';
 
@@ -18,7 +22,7 @@ import {
 import Blogs from '../components/Blogs';
 
 const mapState = (state: State) => ({
-  blogs: Object.keys(state.blogs.blogPosts).map(k => state.blogs.blogPosts[k]),
+  blogs: MapToArray(state.blogs.blogPosts),
   loading: state.blogs.loading,
 });
 

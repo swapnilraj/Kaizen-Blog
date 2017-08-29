@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 
 import BlogCard from './BlogCard';
 
@@ -12,12 +12,30 @@ const renderBlog = (blog: Blog) => (
   <BlogCard blog={blog} />
 );
 
-const Blogs = ({
-  blogs,
-}: BlogsProps) => (
-  <div>
-    { blogs.map(renderBlog) }
-  </div>
-);
+class Blogs extends Component<BlogsProps, any> {
+
+  componentDidMount() {
+    const {
+      loading,
+      getBlogs,
+      blogs,
+    } = this.props;
+
+    if (!loading && blogs.length === 0) {
+      getBlogs();
+    }
+  }
+
+  render({
+    blogs,
+    loading,
+  }: BlogsProps) {
+    return (
+      <div>
+        { loading ? <div>loading</div> : blogs.map(renderBlog) }
+      </div>
+    );
+  }
+}
 
 export default Blogs;
