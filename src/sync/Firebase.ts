@@ -91,6 +91,7 @@ export default class Sync {
       name: author.name,
       photo: author.photo,
       bio: '',
+      username: '',
     })
   }
 
