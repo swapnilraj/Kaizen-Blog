@@ -15,6 +15,7 @@ declare let process: {
 }
 
 interface Blog {
+  id: string;
   title: string;
   createdAt: number;
   updatedAt: number;
@@ -33,6 +34,7 @@ interface BlogMap {
 }
 
 interface Author {
+  id: string;
   name: string;
   email: string;
   bio: string;

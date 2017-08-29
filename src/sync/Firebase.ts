@@ -87,6 +87,7 @@ export default class Sync {
     photo: string,
   }) {
     return this.writeRef<Author>(this.refs.author(author.uid), {
+      id: author.uid,
       email: author.email,
       name: author.name,
       photo: author.photo,
