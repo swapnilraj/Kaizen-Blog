@@ -25,6 +25,7 @@ module.exports = env => {
     path: resolve(process.cwd(), 'dist'),
     filename: '[name].js',
     chunkFilename: '[name].js',
+    publicPath: '/',
   };
 
   if (isProdOrStaging) {
@@ -48,6 +49,9 @@ module.exports = env => {
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json'],
+    },
+    devServer: {
+      historyApiFallback: true,
     },
     plugins: removeEmpty([
       new CleanWebpackPlugin('./dist'),
