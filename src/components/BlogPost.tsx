@@ -1,11 +1,49 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 
-interface BlogPostProp {
+interface BlogPostProps {
   path: string;
+  id: string;
+  blogs: BlogMap;
+  loading: boolean;
+  selectedPost: string;
+  setActivePost: (id: string) => void;
 }
 
-const BlogPost = (_props: BlogPostProp) => (
-  <div>HI</div>
-);
+class BlogPost extends Component<BlogPostProps, any>{
+
+  componentDidMount() {
+    const {
+      id,
+      blogs,
+      loading,
+      selectedPost,
+      setActivePost,
+    } = this.props;
+    const blogId = (id as string).split('-')[0];
+    if (
+      blogId !== selectedPost ||
+      !(blogs[blogId] || loading)
+    ) {
+      setActivePost(blogId);
+    }
+  }
+
+  render({
+    blogs,
+    loading,
+    selectedPost,
+  }: BlogPostProps) {
+
+    const blog = blogs[selectedPost];
+
+    if (loading || !blog) {
+      return (
+        <div>loading</div>
+      );
+    }
+
+    return (<div>{blog.title}</div>);
+  };
+}
 
 export default BlogPost;

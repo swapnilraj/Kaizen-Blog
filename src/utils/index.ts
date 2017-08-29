@@ -10,6 +10,7 @@ export const preloadedState = (): State => ({
   blogs: {
     blogPosts: {},
     loading: false,
+    selectedPost: null,
   }
 });
 

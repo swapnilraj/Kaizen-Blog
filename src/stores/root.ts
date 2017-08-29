@@ -13,7 +13,9 @@ import {
 } from 'redux-observable';
 
 import {
-  blogEpic,
+  getBlogEpic,
+  getBlogsEpic,
+  setActiveBlogEpic,
 } from './blogs'
 
 export type Actions = BlogsActions;
@@ -23,7 +25,9 @@ export interface State {
 }
 
 export const rootEpic = combineEpics<Actions, State>(
-  blogEpic,
+  getBlogEpic,
+  getBlogsEpic,
+  setActiveBlogEpic,
 );
 
 export const rootReducer = combineReducers<State>({
