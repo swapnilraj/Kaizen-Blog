@@ -16,6 +16,10 @@ import {
 } from '../stores/blogs';
 
 import {
+  navigate as showBlog,
+} from '../stores/router';
+
+import {
   State,
 } from '../stores/root';
 
@@ -28,6 +32,7 @@ const mapState = (state: State) => ({
 
 const mapDispatch = (dispatch: Dispatch<State>) => bindActionCreators({
   getBlogs,
+  showBlog: (path:string) => showBlog(`/blogs/${path}`),
 }, dispatch);
 
 const BlogsContainer = connect(

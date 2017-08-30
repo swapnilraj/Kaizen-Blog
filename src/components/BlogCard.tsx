@@ -1,16 +1,15 @@
 import { h } from 'preact';
-import { route } from 'preact-router';
 
 interface BlogCardProps {
   blog: Blog;
+  showBlog: (id:string) => void;
 }
-
-const openBlog = ({id, slug}: Blog) => () => route(`/blogs/${id}-${slug}`);
 
 const BlogCard = ({
   blog,
+  showBlog,
 }: BlogCardProps) => (
-  <div onClick={openBlog(blog)}>
+  <div onClick={() => showBlog(`${blog.id}-${blog.slug}`)}>
     {blog.banner ? <img src={blog.banner} alt={blog.title} /> : null}
     <h2>{blog.title}</h2>
     {blog.salutes ? <p>{blog.salutes}</p> : null}

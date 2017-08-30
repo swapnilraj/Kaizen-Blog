@@ -6,10 +6,11 @@ interface BlogsProps {
   blogs: Blog[];
   loading: boolean;
   getBlogs: () => void;
+  showBlog: (id:string) => void;
 }
 
-const renderBlog = (blog: Blog) => (
-  <BlogCard blog={blog} />
+const renderBlog = (blog: Blog, showBlog:(id:string) => void) => (
+  <BlogCard showBlog={showBlog} blog={blog} />
 );
 
 class Blogs extends Component<BlogsProps, any> {
@@ -29,10 +30,11 @@ class Blogs extends Component<BlogsProps, any> {
   render({
     blogs,
     loading,
+    showBlog,
   }: BlogsProps) {
     return (
       <div>
-        { loading ? <div>loading</div> : blogs.map(renderBlog) }
+        { loading ? <div>loading</div> : blogs.map(blog => renderBlog(blog, showBlog)) }
       </div>
     );
   }
