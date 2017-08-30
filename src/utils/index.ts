@@ -11,6 +11,9 @@ export const preloadedState = (): State => ({
     blogPosts: {},
     loading: false,
     selectedPost: null,
+  },
+  router: {
+    path: '/',
   }
 });
 
