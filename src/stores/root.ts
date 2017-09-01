@@ -6,12 +6,16 @@ import {
   BlogsActions,
   BlogsState,
   blogs,
+  getBlogEpic,
+  getBlogsEpic,
+  setActiveBlogEpic,
 } from './blogs';
 
 import {
   RouterActions,
   RouterState,
   router,
+  routerEpic,
 } from './router';
 
 import {
@@ -19,20 +23,19 @@ import {
 } from 'redux-observable';
 
 import {
-  routerEpic,
-} from './router';
+  AuthorState,
+  AuthorActions,
+  getAuthorEpic,
+  setActiveAuthorEpic,
+  authors,
+} from './authors';
 
-import {
-  getBlogEpic,
-  getBlogsEpic,
-  setActiveBlogEpic,
-} from './blogs'
-
-export type Actions = BlogsActions | RouterActions;
+export type Actions = BlogsActions | RouterActions | AuthorActions;
 
 export interface State {
   blogs: BlogsState;
   router: RouterState;
+  authors: AuthorState;
 }
 
 export const rootEpic = combineEpics<Actions, State>(
@@ -40,9 +43,12 @@ export const rootEpic = combineEpics<Actions, State>(
   getBlogsEpic,
   setActiveBlogEpic,
   routerEpic,
+  getAuthorEpic,
+  setActiveAuthorEpic,
 );
 
 export const rootReducer = combineReducers<State>({
   blogs,
   router,
+  authors,
 });

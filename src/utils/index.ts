@@ -14,6 +14,11 @@ export const preloadedState = (): State => ({
   },
   router: {
     path: '/',
+  },
+  authors: {
+    authors: {},
+    loading: false,
+    selectedAuthor: null,
   }
 });
 

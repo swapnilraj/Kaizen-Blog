@@ -120,7 +120,7 @@ export const blogs = (state: BlogsState = {
     case GET_BLOG_SUCCESS:
       return {...state, loading: false, blogPosts: {
         ...state.blogPosts,
-        [action.id]: action.blog ? action.blog : state.blogPosts[action.id],
+        [action.id]: action.blog || state.blogPosts[action.id],
       }};
     case SET_ACTIVE_POST:
       return {...state, selectedPost: action.id};

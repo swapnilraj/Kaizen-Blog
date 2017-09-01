@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 
 interface BlogPostProps {
-  path: string;
   id: string;
   blogs: BlogMap;
   loading: boolean;
