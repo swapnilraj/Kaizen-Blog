@@ -40,6 +40,7 @@ interface Author {
   bio: string;
   photo: string;
   username: string;
+  blogs: Blog['id'][];
 }
 
 interface AuthorMap {

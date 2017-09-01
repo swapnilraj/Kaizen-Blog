@@ -16,7 +16,7 @@ export default class Sync {
 
   private refs = {
     authors: () => '/authors',
-    author: (uid: string) => this.refs.authors() + `/${uid}`,
+    author: (username: Author['id']) => this.refs.authors() + `/${username}`,
     blogs: () => '/blogs',
     blog: (uid: string) => this.refs.blogs() + `/${uid}`
   };
@@ -93,7 +93,16 @@ export default class Sync {
       photo: author.photo,
       bio: '',
       username: '',
+      blogs: ['']
     })
+  }
+
+  public async getAuthor(username: string): Promise<Author | null> {
+    return this.readRef<Author>(this.refs.author(username));
+  }
+
+  public async getAuthors(): Promise<Author | null> {
+    return this.readRef<Author>(this.refs.authors());
   }
 
   public async login() {
