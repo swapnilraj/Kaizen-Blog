@@ -39,6 +39,16 @@ module.exports = env => {
     entry: {
       'vendor': [
         'firebase',
+        'preact',
+        'preact-redux',
+        'preact-router',
+        'redux',
+        'redux-observable',
+        'rxjs/add/observable/of',
+        'rxjs/add/observable/fromPromise',
+        'rxjs/add/operator/mergeMap',
+        'rxjs/add/operator/map',
+        'uuid/v4',
       ],
       'app': './index.tsx',
     },
