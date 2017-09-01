@@ -11,57 +11,52 @@ import {
 
 import Sync from '../sync/Firebase';
 
-type GetBlogs = 'GET_BLOGS';
-const GET_BLOGS: GetBlogs = 'GET_BLOGS';
+
 interface GetBlogsAction {
-  type: GetBlogs;
+  type: 'GET_BLOGS';
 }
+const GET_BLOGS: GetBlogsAction['type'] = 'GET_BLOGS';
 export const getBlogs = (): GetBlogsAction => ({
   type: GET_BLOGS,
 });
 
-type GetBlogsSuccess = 'GET_BLOGS_SUCCESS';
-export const GET_BLOGS_SUCCESS: GetBlogsSuccess = 'GET_BLOGS_SUCCESS';
 interface GetBlogsSuccessAction {
-  type: GetBlogsSuccess;
+  type: 'GET_BLOGS_SUCCESS';
   blogPosts: BlogMap;
 }
+const GET_BLOGS_SUCCESS: GetBlogsSuccessAction['type'] = 'GET_BLOGS_SUCCESS';
 export const getBlogsSuccess = (blogPosts: BlogMap): GetBlogsSuccessAction => ({
   type: GET_BLOGS_SUCCESS,
   blogPosts,
 });
 
-type GetBlog = 'GET_BLOG';
-const GET_BLOG: GetBlog = 'GET_BLOG';
 interface GetBlogAction {
-  type: GetBlog;
+  type: 'GET_BLOG';
   id: string;
-
 }
+const GET_BLOG: GetBlogAction['type'] = 'GET_BLOG';
 export const getBlog = (id: string): GetBlogAction => ({
   type: GET_BLOG,
   id,
 });
 
-type GetBlogSuccess = 'GET_BLOG_SUCCESS';
-export const GET_BLOG_SUCCESS: GetBlogSuccess = 'GET_BLOG_SUCCESS';
 interface GetBlogSuccessAction {
-  type: GetBlogSuccess;
+  type: 'GET_BLOG_SUCCESS';
   id: string;
   blog: Blog | null;
 }
+const GET_BLOG_SUCCESS: GetBlogSuccessAction['type'] = 'GET_BLOG_SUCCESS';
 const getBlogSuccess = (id: string, blog: Blog | null): GetBlogSuccessAction => ({
   type: GET_BLOG_SUCCESS,
   id,
   blog,
 });
 
-type SetActivePost = 'SET_ACTIVE_POST';
-const SET_ACTIVE_POST: SetActivePost = 'SET_ACTIVE_POST';
 interface SetActivePostAction {
-  type: SetActivePost;
+  type: 'SET_ACTIVE_POST';
   id: string;
 }
+const SET_ACTIVE_POST: SetActivePostAction['type'] = 'SET_ACTIVE_POST';
 export const setActivePost = (id: string): SetActivePostAction => ({
   type: SET_ACTIVE_POST,
   id,
