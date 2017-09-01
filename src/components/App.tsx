@@ -10,6 +10,7 @@ import configureStore from '../stores/index';
 import BlogsContainer from '../containers/BlogsContainer';
 import BlogPostContainer from '../containers/BlogPostContainer';
 import AuthorContainer from '../containers/AuthorContainer';
+import DraftsContainer from '../containers/DraftsContainer';
 
 const store = configureStore();
 
@@ -19,6 +20,7 @@ const App = () => (
       <BlogsContainer path="/" />
       <BlogPostContainer path="/blogs/:id"/>
       <AuthorContainer path="/u/:id/:action?"/>
+      <DraftsContainer path="/new" />
     </Router>
   </Provider>
 );

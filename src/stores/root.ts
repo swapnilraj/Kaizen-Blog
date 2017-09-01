@@ -3,6 +3,10 @@ import {
 } from 'redux';
 
 import {
+  combineEpics,
+} from 'redux-observable';
+
+import {
   BlogsActions,
   BlogsState,
   blogs,
@@ -19,10 +23,6 @@ import {
 } from './router';
 
 import {
-  combineEpics,
-} from 'redux-observable';
-
-import {
   AuthorState,
   AuthorActions,
   getAuthorEpic,
@@ -30,12 +30,25 @@ import {
   authors,
 } from './authors';
 
-export type Actions = BlogsActions | RouterActions | AuthorActions;
+import {
+  drafts,
+  DraftsActions,
+  DraftsState,
+  saveDraftEpic,
+  saveDraftOnlineEpic,
+} from './drafts';
+
+export type Actions =
+  BlogsActions |
+  RouterActions |
+  AuthorActions |
+  DraftsActions;
 
 export interface State {
   blogs: BlogsState;
   router: RouterState;
   authors: AuthorState;
+  drafts: DraftsState;
 }
 
 export const rootEpic = combineEpics<Actions, State>(
@@ -45,10 +58,13 @@ export const rootEpic = combineEpics<Actions, State>(
   routerEpic,
   getAuthorEpic,
   setActiveAuthorEpic,
+  saveDraftEpic,
+  saveDraftOnlineEpic,
 );
 
 export const rootReducer = combineReducers<State>({
   blogs,
   router,
   authors,
+  drafts,
 });

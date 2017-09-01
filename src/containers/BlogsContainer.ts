@@ -8,7 +8,7 @@ import {
 } from 'redux';
 
 import {
-  MapToArray,
+  objectToArray,
 } from '../utils';
 
 import {
@@ -26,7 +26,7 @@ import {
 import Blogs from '../components/Blogs';
 
 const mapState = (state: State) => ({
-  blogs: MapToArray(state.blogs.blogPosts),
+  blogs: objectToArray(state.blogs.blogPosts),
   loading: state.blogs.loading,
 });
 
