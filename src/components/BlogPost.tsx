@@ -41,7 +41,14 @@ class BlogPost extends Component<BlogPostProps, any>{
       );
     }
 
-    return (<div>{blog.title}</div>);
+     return (
+     <div>
+      <h1>{blog.title}</h1>
+      <h2>{blog.authors}</h2>
+      <p>{blog.body}</p>
+      <p>{blog.tags}</p>
+     </div>
+     );
   };
 }
 
