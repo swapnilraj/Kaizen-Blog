@@ -12,6 +12,8 @@ const CopyWebpackPlugin   = require('copy-webpack-plugin');
 const WebpackChunkHash    = require('webpack-chunk-hash');
 const { version }         = require('./package.json');
 
+require('dotenv').config();
+
 module.exports = env => {
   const isProd    = !!env.prod;
   const isStaging = !!env.staging;
@@ -84,7 +86,7 @@ module.exports = env => {
           FIREBASE_PROJECT_ID: `"${process.env.KAIZEN_FB_PROJECT_ID}"`,
         },
       }),
-      ifProd(new webpack.LoaderOptionsPlugin({
+        ifProd(new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false,
       })),
